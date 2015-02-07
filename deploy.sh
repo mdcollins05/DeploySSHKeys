@@ -32,7 +32,7 @@ do
   then
     if [ ! `diff "${keyfile}" "${userhome}/.ssh/authorized_keys" > /dev/null 2>&1` ]
     then
-      echo mv "${userhome}/.ssh/authorized_keys" "${userhome}/.ssh/authorized_keys.orig-$(date +%F-%H%M%S)"
+      echo mv "${userhome}/.ssh/authorized_keys" "${userhome}/.ssh/authorized_keys.orig-$(date +%Y%m%d-%H%M%S)"
     fi
   fi
 
