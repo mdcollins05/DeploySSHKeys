@@ -4,16 +4,16 @@ repo=$1
 
 if [ -d ./keys/ ]
 then
-  echo rm -rf ./keys/
+  rm -rf ./keys/
 fi
 
 if [ -z "$repo" ]
 then
-  echo "You must give the 'repo' variable a value!"
+  echo "Error: You must give the 'repo' variable a value!"
   exit 1
 fi
 
-echo git clone ${repo} ./keys/
+git clone ${repo} ./keys/
 
 FILES=./keys/*.keys
 for keyfile in $FILES
@@ -37,19 +37,19 @@ do
 
   if [ ! -d "${userhome}/.ssh/" ]
   then
-    echo mkdir ${userhome}/.ssh/
-    echo chmod 700 ${userhome}/.ssh/
+    mkdir ${userhome}/.ssh/
+    chmod 700 ${userhome}/.ssh/
   fi
 
   if [ -f "${userhome}/.ssh/authorized_keys" ]
   then
     if [ ! `diff "${keyfile}" "${userhome}/.ssh/authorized_keys" > /dev/null 2>&1` ]
     then
-      echo mv "${userhome}/.ssh/authorized_keys" "${userhome}/.ssh/authorized_keys.orig-$(date +%Y%m%d-%H%M%S)"
+      mv "${userhome}/.ssh/authorized_keys" "${userhome}/.ssh/authorized_keys.orig-$(date +%Y%m%d-%H%M%S)"
     fi
   fi
 
-  echo cp ${keyfile} ${userhome}/.ssh/authorized_keys
-  echo chmod 600 ${userhome}/.ssh/authorized_keys
+  cp ${keyfile} ${userhome}/.ssh/authorized_keys
+  chmod 600 ${userhome}/.ssh/authorized_keys
 done
 
