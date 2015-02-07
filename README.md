@@ -1,5 +1,5 @@
-This will git clone a repo to find keys to deploy to each user:
+This script is designed to run as root, but can work as any user if the user is only deploying their own keys.
 
-matt.keys = ssh authorized_keys for matt user
+It can operate without a ~/.ssh/ (it'll create it if needed), will save the original authorized_keys (if it exists) as authorized_keys.orig.
 
-If user exists and ~/.ssh folder exists, copy original authorized_keys to authorized_keys.old? and copy user.keys to authorized_keys
+It clones a repository (containing the keys), then proceeds to copy the ./keys/$user.keys to the $user's ~/.ssh/authorized_keys after making, chaning permissions and making a backup of the original authorized_keys file.
