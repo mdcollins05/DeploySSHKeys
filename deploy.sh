@@ -1,11 +1,19 @@
 #!/bin/bash
 
+repo=$1
+
 if [ -d ./keys/ ]
 then
   echo rm -rf ./keys/
 fi
 
-echo git clone git_repo ./keys/
+if [ -z "$repo" ]
+then
+  echo "You must give the 'repo' variable a value!"
+  exit 1
+fi
+
+echo git clone ${repo} ./keys/
 
 FILES=./keys/*.keys
 for keyfile in $FILES
@@ -14,6 +22,11 @@ do
   user=${filename%.*}
   # if ~user exists, create .ssh, move original authorized_keys, copy user.key to authorized_keys
   # id -u matt > /dev/null 2>&1 ; echo $?
+
+  if [ -z "$user" ]
+  then
+    continue
+  fi
 
   if [ `id -u ${user} > /dev/null 2>&1` ]
   then
