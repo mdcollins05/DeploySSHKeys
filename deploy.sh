@@ -57,5 +57,6 @@ do
 
   cp ${keyfile} ${userhome}/.ssh/authorized_keys # Copy the new contents in place
   chmod 600 ${userhome}/.ssh/authorized_keys # Set the permissions right
+  chown ${user} ${userhome}/.ssh/authorized_keys # Set the right owner
 done
 
