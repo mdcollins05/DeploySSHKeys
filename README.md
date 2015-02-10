@@ -8,7 +8,7 @@ It accomplishes this by taking the URL of a git repo and clones the repo locally
 
 How to run it:
 
-`deploy.sh https://github.com/mdcollins05/DeploySSHKeys.git`
+`deploy.sh $REPO`
 
 Binaries that are used (most, if not all are usually already installed in a distro):
 * basename
