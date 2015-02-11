@@ -16,3 +16,5 @@ Binaries that are used (most, if not all are usually already installed in a dist
 * getent
 * diff
 * cp, mv, chown, chmod
+
+Hint: Using `ssh -A $HOST` to connect to the host is great when you need a key to access your repo but don't have them yet and you've added the key to your SSH agent.
