@@ -49,7 +49,7 @@ do
 
   if [ -f "${userhome}/.ssh/authorized_keys" ] # Does the file exist already?
   then
-    DIFF=$(diff -q "${keyfile}" "${userhome}/.ssh/authorized_keys > /dev/null)
+    DIFF=$(diff -q "${keyfile}" "${userhome}/.ssh/authorized_keys" > /dev/null)
     if [ $? -ne 0 ] # Is there a difference between the two?
     then
       mv "${userhome}/.ssh/authorized_keys" "${userhome}/.ssh/authorized_keys.orig-$(date +%Y%m%d-%H%M%S)" # Backup the original
